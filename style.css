@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --bg-color: #1a1a2e;
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --border-color: rgba(255, 255, 255, 0.15);
+    --text-color: #e0e0e0;
+    --primary-color: #8a2be2;
+    --accent-color: #00bcd4;
+    --glow-color: #8a2be2;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(138, 43, 226, 0.2) 0%, transparent 70%);
+    animation: rotate-gradient 15s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotate-gradient {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--glow-color);
+}
+
+.drop-zone {
+    border: 3px dashed var(--border-color);
+    border-radius: 15px;
+    padding: 50px 20px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.drop-zone::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.drop-zone.hover::before {
+    width: 300px;
+    height: 300px;
+    opacity: 0.3;
+}
+
+.drop-zone.hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+    transform: translateY(-5px);
+}
+
+.drop-zone p {
+    font-size: 1.2em;
+    pointer-events: none;
+}
+
+.image-comparison-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.comparison-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.comparison-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
+}
+
+.comparison-card img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+}
+
+.comparison-card p {
+    font-size: 0.95em;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.comparison-card p strong {
+    color: var(--primary-color);
+}
+
+.comparison-card .saved-percentage {
+    font-size: 1.1em;
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.comparison-card button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.comparison-card button:hover {
+    background-color: #9932cc;
+    transform: translateY(-2px);
+}
+
+.download-all-zip {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 10px;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.download-all-zip:hover {
+    background-color: #00E5FF;
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(0, 189, 212, 0.5);
+}
